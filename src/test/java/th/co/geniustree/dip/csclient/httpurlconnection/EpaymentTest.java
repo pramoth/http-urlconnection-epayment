@@ -28,7 +28,7 @@ public class EpaymentTest {
             openConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             openConnection.setRequestProperty("Accept", "application/json;charset=UTF-8");
             openConnection.setRequestMethod("POST");
-            String json ="{\"txId\": “100001\", \"reference1\": \"000000000000001000\",\"reference2\": \"201703162310309\",\"amount\": \"4000\",\"paymentDateTime\": \"2017-03-04T16:30:48\"}";
+            String json ="{\"txId\": \"100001\", \"reference1\": \"000000000000001000\",\"reference2\": \"201703162310309\",\"amount\": \"4000\",\"paymentDateTime\": \"2017-03-04T16:30:48\"}";
             openConnection.setDoOutput(true);
             openConnection.getOutputStream().write(json.getBytes(StandardCharsets.UTF_8));
             openConnection.getOutputStream().flush();
