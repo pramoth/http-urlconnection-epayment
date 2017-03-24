@@ -12,6 +12,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.bouncycastle.util.io.Streams;
@@ -29,13 +31,13 @@ public class App {
             openConnection = (HttpURLConnection) url.openConnection();
             openConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             openConnection.setRequestProperty("Accept", "application/json;charset=UTF-8");
-            String result = new String(Streams.readAll(openConnection.getInputStream()));
+            String result = new String(Streams.readAll(openConnection.getInputStream()),StandardCharsets.UTF_8);
             System.out.println(result);
         } catch (IOException ex) {
             if (openConnection != null) {
                 String result;
                 try {
-                    result = new String(Streams.readAll(openConnection.getErrorStream()));
+                    result = new String(Streams.readAll(openConnection.getErrorStream()),StandardCharsets.UTF_8);
                     System.out.println(result);
                 } catch (IOException ex1) {
                     Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex1);
